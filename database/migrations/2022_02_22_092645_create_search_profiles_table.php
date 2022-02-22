@@ -15,6 +15,10 @@ class CreateSearchProfilesTable extends Migration
     {
         Schema::create('search_profiles', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address');
+            $table->foreignUuid('property_type_id');
+            // $table->foreign('property_type_id')->references('id')->on('property_types');
             $table->timestamps();
         });
     }

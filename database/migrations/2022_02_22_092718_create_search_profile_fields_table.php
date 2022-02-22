@@ -15,6 +15,12 @@ class CreateSearchProfileFieldsTable extends Migration
     {
         Schema::create('search_profile_fields', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('min_value')->nullable();
+            $table->string('max_value')->nullable();
+            $table->enum('value_type', ['range', 'direct']);
+            $table->string('property_id');
+            $table->foreign('property_id')->references('id')->on('properties');
             $table->timestamps();
         });
     }
