@@ -15,6 +15,10 @@ class CreatePropertyFieldsTable extends Migration
     {
         Schema::create('property_fields', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('value')->nullable();
+            $table->string('property_id');
+            $table->foreign('property_id')->references('id')->on('properties');
             $table->timestamps();
         });
     }

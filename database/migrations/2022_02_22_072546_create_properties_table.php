@@ -15,6 +15,10 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('address');
+            $table->foreignUuid('property_type_id');
+            // $table->foreign('property_type_id')->references('id')->on('property_types');
             $table->timestamps();
         });
     }
