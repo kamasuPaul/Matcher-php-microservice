@@ -10,5 +10,16 @@ class MatchControllerTests extends TestCase {
         $property_id = 1;
         $response = $this->get("/api/match/$property_id");
         $response->assertStatus(Response::HTTP_OK);
+        $response->assertJsonStructure([
+            "data" => [
+               '*' => [
+                    "searchProfileId",
+                    "score",
+                    "strictMatchesCount",
+                    "looseMatchesCount"
+                ]
+            ]
+        ]);
+
     }
 }
