@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 //add match endpoint 
-Route::get('/match/{property_id}', [MatchController::class, 'getMatchingPropertyProfiles']);
+Route::get('/match/{property}', [MatchController::class, 'getMatchingPropertyProfiles']);
