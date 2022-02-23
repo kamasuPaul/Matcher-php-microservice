@@ -14,7 +14,9 @@ class PropertyFieldFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'property_id' => $this->faker->numberBetween(1, 10),
+            'name' => $this->faker->randomElement(['price', 'rooms', 'bathrooms', 'area']),
+            'value' => $this->faker->numberBetween(100, 1000),
         ];
     }
 }
