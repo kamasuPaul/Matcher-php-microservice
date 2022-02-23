@@ -14,7 +14,11 @@ class SearchProfileFieldFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'search_profile_id' => $this->faker->numberBetween(1, 10),
+            'name' =>$this->faker->randomElement(['price', 'rooms', 'bathrooms', 'area']),
+            'min_value' =>$this->faker->numberBetween(100, 1000),
+            'max_value' =>$this->faker->numberBetween(100, 1000),
+            'value_type' => $this->faker->randomElement(['direct', 'range']),
         ];
     }
 }

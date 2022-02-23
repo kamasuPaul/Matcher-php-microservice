@@ -14,7 +14,9 @@ class SearchProfileFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'property_type_id' => $this->faker->uuid()
+            
         ];
     }
 }
