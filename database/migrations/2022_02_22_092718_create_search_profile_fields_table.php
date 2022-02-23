@@ -19,8 +19,8 @@ class CreateSearchProfileFieldsTable extends Migration
             $table->string('min_value')->nullable();
             $table->string('max_value')->nullable();
             $table->enum('value_type', ['range', 'direct']);
-            $table->string('property_id');
-            $table->foreign('property_id')->references('id')->on('properties');
+            $table->string('search_profile_id');
+            $table->foreign('search_profile_id')->references('id')->on('search_profiles');
             $table->timestamps();
         });
     }
