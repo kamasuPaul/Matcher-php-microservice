@@ -45,7 +45,12 @@ class MatchController extends Controller
      */
     public function getSimilarFields($propertyFields, $profileFields)
     {
-        $intersect = $profileFields->intersect($propertyFields);
+
+        // $intersect = $profileFields->intersect($propertyFields);
+        //filter the profile fields to only include the fields that appear in the property fields
+        $intersect = $profileFields->filter(function ($field) use ($propertyFields) {
+            return in_array($field->name, $propertyFields->pluck('name')->toArray());
+        });
         return $intersect;
     }
 
@@ -63,12 +68,14 @@ class MatchController extends Controller
         //get all fields of the search profile and the property
         $searchProfileFields = $searchProfile->searchProfileFields;
         $propertyFields = $property->propertyFields;
+
         //get all fields that appear in both the search profile and the property
         $intersectingFields = $this->getSimilarFields($propertyFields, $searchProfileFields);
         //for each fied,
         foreach ($intersectingFields as $intersectingField) {
             //get the field value and type
-            $propertyFieldValue = $propertyFields->where('name', $intersectingField->name)->first()->value;
+            $propertyField = $propertyFields->firstWhere('name', $intersectingField->name);
+            $propertyFieldValue = $propertyField->value;
             $searchProfileFieldType = $intersectingField->value_type;
             //if the field type is direct, check if the field value is equal to the property value
             if ($searchProfileFieldType == 'direct') {
