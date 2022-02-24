@@ -8,14 +8,14 @@ It contains a single Get endpoint which accepts a property id and return a list 
 Request: `{baseUrl}/api/match/{propertyId}`  
 Response: 
 
- `` "data" => [
-	["searchProfileId" => {id}, "score" => {matchScore}, "strictMatchesCount" => {counter},"looseMatchesCount" => {counter}],
-	["searchProfileId" => {id}, "score" => {matchScore}, "strictMatchesCount" => {counter},"looseMatchesCount" => {counter}],
-	["searchProfileId" => {id}, "score" => {matchScore}, "strictMatchesCount" => {counter},"looseMatchesCount" => {counter}],
-	[...],
-	[...],
-	[...]
-    ]``
+        "data" => [
+            ["searchProfileId" => {id}, "score" => {matchScore}, "strictMatchesCount" => {counter},"looseMatchesCount" => {counter}],
+            ["searchProfileId" => {id}, "score" => {matchScore}, "strictMatchesCount" => {counter},"looseMatchesCount" => {counter}],
+            ["searchProfileId" => {id}, "score" => {matchScore}, "strictMatchesCount" => {counter},"looseMatchesCount" => {counter}],
+            [...],
+            [...],
+            [...]
+            ]
 
 Sample request: `{baseUrl}/api/match/1` 
 
